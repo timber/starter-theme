@@ -1,6 +1,6 @@
 {
     "name": "upstatement/timber-starter-theme",
-    "description": "Lattice Theme Repo",
+    "description": "Starter theme to build a Timber theme",
     "type":"wordpress-theme",
     "authors": [
         {
