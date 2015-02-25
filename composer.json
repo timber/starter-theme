@@ -1,0 +1,11 @@
+{
+    "name": "upstatement/timber-starter-theme",
+    "description": "Lattice Theme Repo",
+    "type":"wordpress-theme",
+    "authors": [
+        {
+            "name": "jarednova",
+            "email": "jared@upstatement.com"
+        }
+    ]
+}
