@@ -1,7 +1,7 @@
 {
     "name": "upstatement/timber-starter-theme",
     "description": "Starter theme to build a Timber theme",
-    "type":"wordpress-theme",
+    "type":"package",
     "authors": [
         {
             "name": "jarednova",
