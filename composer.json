@@ -7,5 +7,8 @@
             "name": "jarednova",
             "email": "jared@upstatement.com"
         }
-    ]
+    ],
+	"require-dev": {
+		"jarednova/timber": "dev-master"
+	}
 }
