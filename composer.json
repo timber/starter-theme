@@ -1,7 +1,7 @@
 {
     "name": "upstatement/timber-starter-theme",
     "description": "Starter theme to build a Timber theme",
-    "type":"wordpress-plugin",
+    "type":"wordpress-theme",
     "minimum-stability" : "dev",
     "authors": [
         {
