@@ -2,7 +2,7 @@
 
 	class TestTimberStarterTheme extends WP_UnitTestCase {
 
-		function testFunctionsPHP(){
+		function testFunctionsPHP() {
 			self::_setupStarterTheme();
 			require_once(get_template_directory().'/functions.php');
 			$context = Timber::get_context();
@@ -16,8 +16,6 @@
 			$dest = WP_CONTENT_DIR.'/themes/timber-starter-theme/';
 			$src = __DIR__.'/../../timber-starter-theme/';
 			if (is_dir($src)) {
-				echo 'its a directory';
-				return;
 				self::_copyDirectory($src, $dest);
 				switch_theme('timber-starter-theme');
 			} else {
