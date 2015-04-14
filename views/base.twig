@@ -14,22 +14,7 @@
 						<a class="hdr-logo-link" href="/" rel="home">{{site.name}}</a>
 					</h1>
 					<nav id="nav-main" class="nav-main" role="navigation">
-						<ul class="nav">
-						{% for item in menu.get_items %}
-							<li class="nav-item {{item.classes | join(' ')}}">
-								<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
-								{% if item.get_children %}
-									<ul class="nav nav-drop">
-									{% for child in item.get_children %}
-										<li class="nav-drop-item">
-											<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
-										</li>
-									{% endfor %}
-									</ul>
-								{% endif %}
-							</li>
-						{% endfor %}
-						</ul>
+						{% include "menu.twig" with {'menu': menu.get_items} %}
 					</nav><!-- #nav -->
 				</div>
 			{% endblock %}
