@@ -2,14 +2,26 @@
 
 	class TestTimberStarterTheme extends WP_UnitTestCase {
 
-		function testFunctionsPHP() {
+		function setUp() {
 			self::_setupStarterTheme();
 			require_once(get_template_directory().'/functions.php');
+		}
+
+		function tearDown() {
+			switch_theme('twentythirteen');
+		}
+
+		function testFunctionsPHP() {
 			$context = Timber::get_context();
 			$this->assertEquals('StarterSite', get_class($context['site']));
 			$this->assertTrue(current_theme_supports('post-thumbnails'));
 			$this->assertEquals('bar', $context['foo']);
-			switch_theme('twentythirteen');
+		}
+
+		function testLoading() {
+			$str = Timber::compile('tease.twig');
+			$this->assertStringStartsWith('<article class="tease tease-" id="tease-">', $str);
+			$this->assertStringEndsWith('</article>', $str);
 		}
 
 		static function _setupStarterTheme(){
