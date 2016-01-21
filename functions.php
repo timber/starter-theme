@@ -39,18 +39,18 @@ class StarterSite extends TimberSite {
 		return $context;
 	}
 
+	function myfoo( $text ) {
+		$text .= ' bar!';
+		return $text;
+	}
+
 	function add_to_twig( $twig ) {
 		/* this is where you can add your own fuctions to twig */
 		$twig->addExtension( new Twig_Extension_StringLoader() );
-		$twig->addFilter( 'myfoo', new Twig_Filter_Function( 'myfoo' ) );
+		$twig->addFilter('myfoo', new Twig_SimpleFilter('myfoo', array($this, 'myfoo')));
 		return $twig;
 	}
 
 }
 
 new StarterSite();
-
-function myfoo( $text ) {
-	$text .= ' bar!';
-	return $text;
-}
