@@ -25,11 +25,11 @@
 		}
 
 		static function _setupStarterTheme(){
-			$dest = WP_CONTENT_DIR.'/themes/timber-starter-theme/';
-			$src = __DIR__.'/../../timber-starter-theme/';
+			$dest = WP_CONTENT_DIR.'/themes/starter-theme/';
+			$src = __DIR__.'/../../starter-theme/';
 			if (is_dir($src)) {
 				self::_copyDirectory($src, $dest);
-				switch_theme('timber-starter-theme');
+				switch_theme('starter-theme');
 			} else {
 				echo 'no its not';
 			}
