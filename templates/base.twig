@@ -11,7 +11,7 @@
 			{% block header %}
 				<div class="wrapper">
 					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="/" rel="home">{{site.name}}</a>
+						<a class="hdr-logo-link" href="{{site.siteurl}}" rel="home">{{site.name}}</a>
 					</h1>
 					<nav id="nav-main" class="nav-main" role="navigation">
 						{% include "menu.twig" with {'menu': menu.get_items} %}
