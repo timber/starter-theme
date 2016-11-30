@@ -12,19 +12,26 @@
 					{{post.content}}
 				</div>
 			</section>
-		{% if post.comment_status != 'closed' %}
-			<section class="comments">
-				<div class="respond">
-					<h3 class="h2">Comments</h3>
-					{{ fn('comment_form') }}
-				</div>
-				<div class="responses">
-					{% for cmt in post.get_comments() %}
-						{% include "comment.twig" with {comment:cmt} %}
-					{% endfor %}
-				</div>
-			</section>
-		{% endif %}
+
+    		<!-- comment box -->
+            <section class="comment-box">
+                <!-- comments -->
+                <div class="comments">
+                    {% if post.comments %}
+                        <h3> comments </h3>
+                        {% for cmt in post.comments %}
+                            {% include "comment.twig" with {comment:cmt} %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                {% if post.comment_status == "closed" %}
+					<p> comments for this post are closed </p>
+				{% else %}
+                    <!-- comment form -->
+                    {% include "comment-form.twig" %}
+                {% endif %}
+            </section>
 		</article>
 	</div><!-- /content-wrapper -->
 {% endblock %}
