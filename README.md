@@ -9,7 +9,7 @@ The "_s" for Timber: a dead-simple theme that you can build from. The primary pu
 
 Install this theme as you would any other, and be sure the Timber plugin is activated. But hey, let's break it down into some bullets:
 
-1. Make sure you have installed the plugin for the [Timber Library](https://wordpress.org/plugins/timber-library/) (and Advanced Custom Fields - they [play quite nicely](https://github.com/jarednova/timber/wiki/ACF-Cookbook) together). 
+1. Make sure you have installed the plugin for the [Timber Library](https://wordpress.org/plugins/timber-library/) (and Advanced Custom Fields - they [play quite nicely](http://timber.github.io/timber/#acf-cookbook) together). 
 2. Download the zip for this theme (or clone it) and move it to `wp-content/themes` in your WordPress installation. 
 3. Rename the folder to something that makes sense for your website (generally no spaces and all lowercase). You could keep the name `timber-starter-theme` but the point of a starter theme is to make it your own!
 4. Activate the theme in Appearance >  Themes.
@@ -31,5 +31,5 @@ The [main Timber Wiki](https://github.com/jarednova/timber/wiki) is super great,
 * [Twig for Timber Cheatsheet](http://notlaura.com/the-twig-for-timber-cheatsheet/)
 * [Timber and Twig Reignited My Love for WordPress](https://css-tricks.com/timber-and-twig-reignited-my-love-for-wordpress/) on CSS-Tricks
 * [A real live Timber theme](https://github.com/laras126/yuling-theme).
-* [Timber Video Tutorials](https://github.com/jarednova/timber/wiki/Video-Tutorials) and [an incomplete set of screencasts](https://www.youtube.com/playlist?list=PLuIlodXmVQ6pkqWyR6mtQ5gQZ6BrnuFx-) for building a Timber theme from scratch.
+* [Timber Video Tutorials](http://timber.github.io/timber/#video-tutorials) and [an incomplete set of screencasts](https://www.youtube.com/playlist?list=PLuIlodXmVQ6pkqWyR6mtQ5gQZ6BrnuFx-) for building a Timber theme from scratch.
 
