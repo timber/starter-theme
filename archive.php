@@ -35,6 +35,6 @@ if ( is_day() ) {
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
-$context['posts'] = Timber::get_posts();
+$context['posts'] = new Timber\PostQuery();
 
 Timber::render( $templates, $context );
