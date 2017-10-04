@@ -35,7 +35,6 @@ if ( is_day() ) {
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
-$context['posts'] = Timber::get_posts();
-$context['pagination'] = Timber::get_pagination(['show_all' => false, 'mid_size' => 2, 'end_size' => 1]);
+$context['posts'] = new Timber\PostQuery();
 
 Timber::render( $templates, $context );

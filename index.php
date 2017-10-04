@@ -12,9 +12,8 @@
  * @subpackage  Timber
  * @since   Timber 0.1
  */
-
 $context = Timber::get_context();
-$context['posts'] = Timber::get_posts();
+$context['posts'] = new Timber\PostQuery();
 $context['foo'] = 'bar';
 $templates = array( 'index.twig' );
 if ( is_home() ) {
