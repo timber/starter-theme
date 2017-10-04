@@ -36,5 +36,6 @@ if ( is_day() ) {
 }
 
 $context['posts'] = Timber::get_posts();
+$context['pagination'] = Timber::get_pagination(['show_all' => false, 'mid_size' => 2, 'end_size' => 1]);
 
 Timber::render( $templates, $context );
