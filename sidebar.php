@@ -1,6 +1,6 @@
 <?php
 /**
- * The Template for displaying all single posts
+ * The Template for the sidebar containing the main widget area
  *
  *
  * @package  WordPress
