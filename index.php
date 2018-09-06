@@ -12,6 +12,7 @@
  * @subpackage  Timber
  * @since   Timber 0.1
  */
+
 $context = Timber::get_context();
 $context['posts'] = new Timber\PostQuery();
 $context['foo'] = 'bar';
