@@ -22,7 +22,8 @@ if ( ! class_exists( 'Timber' ) ) {
 
 Timber::$dirname = array( 'templates', 'views' );
 /** Start Timber! */
-class StarterSite extends TimberSite {
+
+class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
 		add_theme_support( 'post-formats' );
@@ -52,7 +53,7 @@ class StarterSite extends TimberSite {
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
-		$context['menu'] = new TimberMenu();
+		$context['menu'] = new Timber\Menu();
 		$context['site'] = $this;
 		return $context;
 	}
@@ -72,7 +73,7 @@ class StarterSite extends TimberSite {
 	 */
 	public function add_to_twig( $twig ) {
 		$twig->addExtension( new Twig_Extension_StringLoader() );
-		$twig->addFilter( 'myfoo', new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
+		$twig->addFilter( new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 		return $twig;
 	}
 
