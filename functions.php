@@ -39,9 +39,7 @@ Timber::$autoescape = false;
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
-		$this->theme_supports();
-
-		add_theme_support( 'menus' );
+		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
@@ -118,6 +116,8 @@ class StarterSite extends Timber\Site {
 				'audio',
 			)
 		);
+
+		add_theme_support( 'menus' );
 	}
 
 	/** This Would return 'foo bar!'.
