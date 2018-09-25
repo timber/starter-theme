@@ -1,0 +1,13 @@
+{# see `archive.twig` for an alternative strategy of extending templates #}
+{% extends "base.twig" %}
+
+{% block content %}
+  {# see `base.twig:27` for where this block's content will be inserted #}
+  <div class="content-wrapper">
+    {% for post in posts %}
+      {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+    {% endfor %}
+
+    {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+  </div>
+{% endblock %}

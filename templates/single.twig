@@ -6,6 +6,7 @@
 			<img src="{{ post.thumbnail.src|resize(1200, 300) }}">
 			<section class="article-content">
 				<h1 class="article-h1">{{ post.title }}</h1>
+				<a href="{{ post.link }}">{{ _e('edit') }}</a>
 				<p class="blog-author">
 					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
 				</p>
