@@ -21,7 +21,7 @@
  * @since    Timber 0.1
  */
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $timber_post = new Timber\Post();
 $context['post'] = $timber_post;
