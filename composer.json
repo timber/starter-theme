@@ -25,5 +25,8 @@
 	},
   "require": {
 	  "wpackagist-plugin/timber-library": "1.*"
-  }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.7.16|6.*"
+  },
 }
