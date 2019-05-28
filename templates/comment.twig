@@ -3,6 +3,10 @@
 	<div class="comment-content">{{comment.comment_content|wpautop}}</div>
 
 	<section class="comment-box">
+		
+		<!-- comment form -->
+		{% include "comment-form.twig" %}
+
 		<!-- child comments -->
 		{% if post.comments %}
 			<h4> replies </h4>
@@ -13,7 +17,5 @@
 			</div>
 		{% endif %}
 
-		<!-- comment form -->
-		{% include "comment-form.twig" %}
 	</section>
 </div>
