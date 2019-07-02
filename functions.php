@@ -8,9 +8,6 @@
  * @since   Timber 0.1
  */
 
-if ( file_exists(__DIR__.'/vendor/autoload.php') ) {
-	require_once( __DIR__ . '/vendor/autoload.php' );
-}
 
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {
