@@ -1,10 +1,5 @@
 <?php
 
-if ( file_exists($composer_autoload = __DIR__ . '/../vendor/autoload.php') ) {
-	require_once($composer_autoload);
-}
-
-
 $_tests_dir = getenv('WP_TESTS_DIR');
 if ( !$_tests_dir ) $_tests_dir = '/tmp/wordpress-tests-lib';
 
