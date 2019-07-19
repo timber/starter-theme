@@ -4,7 +4,7 @@
 
 		function setUp() {
 			self::_setupStarterTheme();
-			switch_theme('starter-theme');
+			switch_theme( basename( dirname( dirname( __FILE__ ) ) ) );
 			require_once(__DIR__.'/../functions.php');
 		}
 
@@ -31,8 +31,8 @@
 		}
 
 		static function _setupStarterTheme(){
-			$dest = WP_CONTENT_DIR.'/themes/starter-theme';
-			$src = realpath(__DIR__.'/../../starter-theme/');
+			$dest = WP_CONTENT_DIR . '/themes/' . basename( dirname( dirname( __FILE__ ) ) );
+			$src  = realpath( __DIR__ . '/../../' . basename( dirname( dirname( __FILE__ ) ) ) );
 			if ( is_dir($src) && !file_exists($dest) ) {
 				symlink($src, $dest);
 			}
