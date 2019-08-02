@@ -1,6 +1,8 @@
 {% if posts.pagination.pages is not empty %}
     <nav class="pagination-block">
         <ul class="pagination">
+
+            {# First #}
             {% if pagination.pages|first and pagination.pages|first.current != true %}
                 <li class="first btn">
                     <a href="{{ pagination.pages|first.link }}">First</a>
@@ -11,6 +13,7 @@
                 </li>
             {% endif %}
 
+            {# Previous #}
             {% if pagination.prev %}
                 <li class="prev btn">
                     <a href="{{ pagination.prev.link }}">Previous</a>
@@ -21,6 +24,7 @@
                 </li>
             {% endif %}
 
+            {# Pages #}
             {% for page in pagination.pages %}
                 {% if page.link %}
                     <li>
@@ -33,19 +37,18 @@
                 {% endif %}
             {% endfor %}
 
+            {# Next #}
             {% if pagination.next %}
                 <li class="next btn">
-                    <a href="{{ pagination.next.link }}">
-                        Next
-                    </a>
+                    <a href="{{ pagination.next.link }}">Next</a>
                 </li>
             {% else %}
                 <li class="next btn disabled">
-                    <button disabled>
-                        Next
-                    </button>
+                    <button disabled>Next</button>
                 </li>
             {% endif %}
+
+            {# Last #}
             {% if pagination.pages|last and pagination.pages|last.current != true %}
                 <li class="last btn">
                     <a href="{{ pagination.pages|last.link }}">Last</a>
@@ -55,6 +58,7 @@
                     <button disabled>Last</button>
                 </li>
             {% endif %}
+            
         </ul>
     </nav>
 {% endif %}
