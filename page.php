@@ -8,7 +8,7 @@
  * different template.
  *
  * To generate specific templates for your pages you can use:
- * /mytheme/views/page-mypage.twig
+ * /mytheme/templates/page-mypage.twig
  * (which will still route through this PHP file)
  * OR
  * /mytheme/page-mypage.php
