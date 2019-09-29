@@ -7,7 +7,7 @@
     {
       "email": "jared@upstatement.com",
       "name": "jarednova"
-    }  
+    }
   ],
   "repositories": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-	  "timber/timber": "1.*"
+    "timber/timber": "1.*"
   },
   "require-dev": {
     "phpunit/phpunit": "5.7.16|6.*"
