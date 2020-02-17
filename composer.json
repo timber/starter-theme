@@ -2,7 +2,7 @@
   "name": "upstatement/timber-starter-theme",
   "description": "Starter theme to build a Timber theme",
   "type":"wordpress-theme",
-  "minimum-stability" : "stable",
+  "minimum-stability" : "dev",
   "authors": [
     {
       "email": "jared@upstatement.com",
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-	  "timber/timber": "1.*"
+	  "timber/timber": "dev-2.x-term-factories"
   },
   "require-dev": {
     "phpunit/phpunit": "5.7.16|6.*"
