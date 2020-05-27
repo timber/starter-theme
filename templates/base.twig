@@ -39,6 +39,8 @@
 			<footer id="footer">
 				{% include 'footer.twig' %}
 			</footer>
+			{{ enqueue_style( 'main' ) }}
+			{{ enqueue_script( 'main' ) }}
 			{{ function('wp_footer') }}
 		{% endblock %}
 	</body>

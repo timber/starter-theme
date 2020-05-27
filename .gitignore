@@ -1,3 +1,6 @@
 vendor
 wp-content
 composer.lock
+/node_modules
+static/styles
+static/scripts
