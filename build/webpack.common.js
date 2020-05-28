@@ -5,7 +5,7 @@ module.exports = {
     site: './src/main.js'
   },
   output: {
-    path: path.resolve(__dirname, '..', 'static', 'scripts'),
+    path: path.resolve(__dirname, '../static/scripts'),
     filename: '[name].js'
   }
 };

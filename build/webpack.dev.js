@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -27,13 +28,22 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        path.resolve(__dirname, '../static/styles/**/*.css')
+      ]
+    }),
     new BrowserSyncPlugin({
       open: false,
       host: 'localhost',
       proxy: 'http://localhost:8888'
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8887,
+      openAnalyzer: false
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, '..', 'static')
+    contentBase: path.resolve(__dirname, '../static')
   }
 });
