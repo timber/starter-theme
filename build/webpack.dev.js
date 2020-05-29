@@ -60,6 +60,7 @@ module.exports = merge(common, {
         res.send('');
       });
     },
+    overlay: true,
     compress: true,
     hot: true,
     port: 9000
