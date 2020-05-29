@@ -30,13 +30,20 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
+        '**/*',
         path.resolve(__dirname, '../static/styles/**/*.css')
       ]
     }),
     new BrowserSyncPlugin({
       open: false,
       host: 'localhost',
-      proxy: 'http://localhost:8888'
+      proxy: 'http://localhost:8888',
+      reloadDebounce: 2000,
+      files: [
+        '*.php'
+      ]
+    }, {
+      reload: false
     }),
     new BundleAnalyzerPlugin({
       analyzerPort: 8887,
@@ -44,6 +51,8 @@ module.exports = merge(common, {
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, '../static')
+    compress: true,
+    hot: true,
+    port: 9000
   }
 });
