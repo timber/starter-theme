@@ -53,6 +53,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     before: app => {
+      // Intercept all requests for static assets that aren't js files and send a (most-likely) empty file to satisfy PHP
       app.get(/\.(?!js).*$/, (req, res) => {
         const mimeType = mime.getType(req.url.split('?')[0]);
         res.setHeader('Content-Type', mimeType);
