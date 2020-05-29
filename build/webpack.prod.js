@@ -21,7 +21,15 @@ module.exports = merge(common, {
     minimize: true,
     minimizer: [
       new TerserPlugin()
-    ]
+    ],
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial'
+        }
+      }
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
