@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const mime = require('mime');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -51,6 +52,13 @@ module.exports = merge(common, {
     })
   ],
   devServer: {
+    before: app => {
+      app.get(/\.(?!js).*$/, (req, res) => {
+        const mimeType = mime.getType(req.url.split('?')[0]);
+        res.setHeader('Content-Type', mimeType);
+        res.send('');
+      });
+    },
     compress: true,
     hot: true,
     port: 9000
