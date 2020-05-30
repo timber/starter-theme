@@ -4,3 +4,4 @@ composer.lock
 /node_modules
 static/styles
 static/scripts
+yarn-error.log
