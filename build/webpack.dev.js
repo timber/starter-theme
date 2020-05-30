@@ -43,16 +43,16 @@ module.exports = merge(common, {
       proxy: {
         target: 'http://localhost:8888',
         proxyReq: [
-          proxyReq => {
-            // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
-            if (new RegExp(`wp-content\/themes.*${nonJSAsset}`).test(proxyReq.path)) {
-              proxyReq.setHeader('X-Development', '1');
-            }
-          }
+          // proxyReq => {
+          //   // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
+          //   if (new RegExp(`wp-content\/themes.*${nonJSAsset}`).test(proxyReq.path)) {
+          //     proxyReq.setHeader('X-Development', '1');
+          //   }
+          // }
         ],
       },
       reloadDebounce: 2000,
-      https: true,
+      // https: true,
       files: [
         '*.php'
       ]
@@ -67,7 +67,7 @@ module.exports = merge(common, {
   devServer: {
     before: app => {
       // Intercept all requests for static assets that aren't js files and send a (most-likely) empty file to satisfy PHP
-      app.get(new RegExp(nonJSAsset), (req, res) => {
+      app.get(/^((?!js).)*$/, (req, res) => {
         const mimeType = mime.getType(req.url.split('?')[0]);
         res.setHeader('Content-Type', mimeType);
         res.send('');
@@ -76,7 +76,7 @@ module.exports = merge(common, {
     overlay: true,
     compress: true,
     hot: true,
-    https: true,
+    // https: true,
     port: 9000
   }
 });
