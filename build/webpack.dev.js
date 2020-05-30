@@ -38,8 +38,19 @@ module.exports = merge(common, {
     new BrowserSyncPlugin({
       open: false,
       host: 'localhost',
-      proxy: 'http://localhost:8888',
+      proxy: {
+        target: 'http://localhost:8888',
+        proxyReq: [
+          proxyReq => {
+            // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
+            if (/wp-content\/themes.*\.(?!js).*$/.test(proxyReq.path)) {
+              proxyReq.setHeader('X-Development', '1');
+            }
+          }
+        ],
+      },
       reloadDebounce: 2000,
+      https: true,
       files: [
         '*.php'
       ]
@@ -63,6 +74,7 @@ module.exports = merge(common, {
     overlay: true,
     compress: true,
     hot: true,
+    https: true,
     port: 9000
   }
 });
