@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const merge = require('webpack-merge');
 const mime = require('mime');
@@ -5,8 +6,9 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const common = require('./webpack.common');
+const { browserSyncOptions } = require('./webpack.parts');
 
-module.exports = merge(common, {
+const config = {
   mode: 'development',
   devtool: 'inline-source-map',
   watch: true,
@@ -35,28 +37,6 @@ module.exports = merge(common, {
         path.resolve(__dirname, '../static/styles/**/*.css')
       ]
     }),
-    new BrowserSyncPlugin({
-      open: false,
-      host: 'localhost',
-      proxy: {
-        target: 'http://localhost:8888',
-        proxyReq: [
-          // proxyReq => {
-          //   // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
-          //   if (new RegExp(`wp-content\/themes.*${nonJSAsset}`).test(proxyReq.path)) {
-          //     proxyReq.setHeader('X-Development', '1');
-          //   }
-          // }
-        ],
-      },
-      reloadDebounce: 2000,
-      // https: true,
-      files: [
-        '*.php'
-      ]
-    }, {
-      reload: false
-    }),
     new BundleAnalyzerPlugin({
       analyzerPort: 8887,
       openAnalyzer: false
@@ -74,7 +54,21 @@ module.exports = merge(common, {
     overlay: true,
     compress: true,
     hot: true,
-    // https: true,
     port: 9000
   }
-});
+};
+
+if (process.env.HTTPS) {
+  config.devServer.https = true;
+  browserSyncOptions[0].https = true;
+  browserSyncOptions[0].proxy.proxyReq.push(proxyReq => {
+    // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
+    if (/wp-content\/themes/.test(proxyReq.path)) {
+      proxyReq.setHeader('X-Development', '1');
+    }
+  });
+}
+
+config.plugins.push(new BrowserSyncPlugin(...browserSyncOptions));
+
+module.exports = merge(common, config);

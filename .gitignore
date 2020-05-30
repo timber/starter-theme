@@ -5,3 +5,4 @@ composer.lock
 static/styles
 static/scripts
 yarn-error.log
+.env
