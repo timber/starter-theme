@@ -6,6 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const common = require('./webpack.common');
 
+const nonJSAsset = '\.(?!js).*$';
+
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -43,7 +45,7 @@ module.exports = merge(common, {
         proxyReq: [
           proxyReq => {
             // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
-            if (/wp-content\/themes.*\.(?!js).*$/.test(proxyReq.path)) {
+            if (new RegExp(`wp-content\/themes.*${nonJSAsset}`).test(proxyReq.path)) {
               proxyReq.setHeader('X-Development', '1');
             }
           }
@@ -65,7 +67,7 @@ module.exports = merge(common, {
   devServer: {
     before: app => {
       // Intercept all requests for static assets that aren't js files and send a (most-likely) empty file to satisfy PHP
-      app.get(/\.(?!js).*$/, (req, res) => {
+      app.get(new RegExp(nonJSAsset), (req, res) => {
         const mimeType = mime.getType(req.url.split('?')[0]);
         res.setHeader('Content-Type', mimeType);
         res.send('');
