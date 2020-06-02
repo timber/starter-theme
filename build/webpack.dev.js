@@ -5,7 +5,8 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const common = require('./webpack.common');
-const { browserSyncOptions } = require('./webpack.parts');
+const paths = require('./parts/webpack.paths');
+const browserSyncConfig = require('./parts/webpack.browsersync');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -30,11 +31,11 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new BrowserSyncPlugin(...browserSyncOptions),
+    new BrowserSyncPlugin(...browserSyncConfig()),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
         '**/*',
-        path.resolve(__dirname, '../static/styles/**/*.css')
+        path.join(paths.build, 'styles/**/*.css')
       ]
     }),
     new BundleAnalyzerPlugin({

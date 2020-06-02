@@ -1,11 +1,11 @@
-const path = require('path');
+const paths = require('./parts/webpack.paths');
 
 module.exports = {
   entry: {
     site: './src/main.js'
   },
   output: {
-    path: path.resolve(__dirname, '../static/scripts'),
+    path: paths.output,
     filename: '[name].js'
   }
 };

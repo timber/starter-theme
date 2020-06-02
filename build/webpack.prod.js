@@ -1,7 +1,11 @@
+const path = require('path');
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob-all');
 const common = require('./webpack.common');
+const paths = require('./parts/webpack.paths');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -34,6 +38,16 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '../styles/[name].css'
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync(
+        [
+          path.join(paths.src, '*.js'),
+          path.join(paths.src, '**/*.js'),
+          path.join(paths.root, 'templates/**')
+        ],
+        { nodir: true }
+      )
     })
   ]
 });
