@@ -1,4 +1,3 @@
-require('dotenv').config();
 const path = require('path');
 const merge = require('webpack-merge');
 const mime = require('mime');
@@ -8,7 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const common = require('./webpack.common');
 const { browserSyncOptions } = require('./webpack.parts');
 
-const config = {
+module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   watch: true,
@@ -31,6 +30,7 @@ const config = {
     ]
   },
   plugins: [
+    new BrowserSyncPlugin(...browserSyncOptions),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
         '**/*',
@@ -44,7 +44,7 @@ const config = {
   ],
   devServer: {
     before: app => {
-      // Intercept all requests for static assets that aren't js files and send a (most-likely) empty file to satisfy PHP
+      // Intercept all requests for static assets that aren't js files and send a (most-likely) empty response to satisfy PHP
       app.get(/^((?!js).)*$/, (req, res) => {
         const mimeType = mime.getType(req.url.split('?')[0]);
         res.setHeader('Content-Type', mimeType);
@@ -56,19 +56,4 @@ const config = {
     hot: true,
     port: 9000
   }
-};
-
-if (process.env.HTTPS) {
-  config.devServer.https = true;
-  browserSyncOptions[0].https = true;
-  browserSyncOptions[0].proxy.proxyReq.push(proxyReq => {
-    // apply a custom header to all requests that occur from the wp-content/themes directory and that are not JS assets
-    if (/wp-content\/themes/.test(proxyReq.path)) {
-      proxyReq.setHeader('X-Development', '1');
-    }
-  });
-}
-
-config.plugins.push(new BrowserSyncPlugin(...browserSyncOptions));
-
-module.exports = merge(common, config);
+});
