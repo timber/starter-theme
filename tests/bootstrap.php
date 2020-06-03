@@ -6,7 +6,7 @@ if ( !$_tests_dir ) $_tests_dir = '/tmp/wordpress-tests-lib';
 require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	$plugins_dir = dirname( __FILE__ ).'/../../../plugins';
+	$plugins_dir = dirname( __FILE__ ).'/../../../../plugins';
 	$timber =  $plugins_dir.'/timber/timber.php';
 	if ( file_exists($timber) ) {
 		require_once($timber);
