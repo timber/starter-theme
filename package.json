@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.dev.js",
-    "dev-watch": "nodemon --watch 'build/webpack.*.js' --exec \"yarn dev\"",
-    "prod": "webpack --config build/webpack.prod.js"
+    "dev-watch": "nodemon --watch build/webpack.*.js --exec \"yarn dev\"",
+    "prod": "webpack --config build/webpack.prod.js",
+    "analyze": "nodemon --watch 'build/webpack.*.js' --watch '.env' --exec \"webpack --config build/webpack.analyze.js\""
   },
   "devDependencies": {
     "bootstrap": "^4.5.0",

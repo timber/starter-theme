@@ -80,6 +80,7 @@ class StarterSite extends Timber\Site {
 	public function register_scripts() {
 		wp_register_style( 'main', get_stylesheet_directory_uri( ) . '/static/styles/site.css' );
 		wp_register_script( 'main', get_stylesheet_directory_uri( ) . '/static/scripts/site.js' );
+		wp_register_script( 'custom', get_stylesheet_directory_uri( ) . '/static/scripts/custom.js' );
 	}
 	/** This is where you add some context
 	 *

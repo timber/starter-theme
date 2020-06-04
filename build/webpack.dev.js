@@ -3,7 +3,6 @@ const merge = require('webpack-merge');
 const mime = require('mime');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const common = require('./webpack.common');
 const paths = require('./parts/webpack.paths');
 const browserSyncConfig = require('./parts/webpack.browsersync');
@@ -37,10 +36,6 @@ module.exports = merge(common, {
         '**/*',
         path.join(paths.build, 'styles/**/*.css')
       ]
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerPort: 8887,
-      openAnalyzer: false
     })
   ],
   devServer: {

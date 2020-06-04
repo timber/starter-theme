@@ -27,12 +27,14 @@ module.exports = merge(common, {
       new TerserPlugin()
     ],
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'initial'
-        }
-      }
+      chunks: 'all'
+      // cacheGroups: {
+      //   commons: {
+      //     name: 'vendor',
+      //     chunks: 'initial',
+      //     minChunks: 2
+      //   }
+      // }
     }
   },
   plugins: [
