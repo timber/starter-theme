@@ -39,10 +39,15 @@
 			<footer id="footer">
 				{% include 'footer.twig' %}
 			</footer>
+
 			{{ enqueue_style( 'main' ) }}
+			
+			{{ enqueue_script( 'vendor' ) }}
+			{{ enqueue_script( 'common' ) }}
 			{{ enqueue_script( 'main' ) }}
 			{{ enqueue_script( 'custom' ) }}
-			{{ function('wp_footer') }}
+			
+			{{ function( 'wp_footer' ) }}
 		{% endblock %}
 	</body>
 </html>

@@ -79,6 +79,8 @@ class StarterSite extends Timber\Site {
 
 	public function register_scripts() {
 		wp_register_style( 'main', get_stylesheet_directory_uri( ) . '/static/styles/site.css' );
+		wp_register_script( 'vendor', get_stylesheet_directory_uri( ) . '/static/scripts/vendor.js' );
+		wp_register_script( 'common', get_stylesheet_directory_uri( ) . '/static/scripts/common.js' );
 		wp_register_script( 'main', get_stylesheet_directory_uri( ) . '/static/scripts/site.js' );
 		wp_register_script( 'custom', get_stylesheet_directory_uri( ) . '/static/scripts/custom.js' );
 	}
