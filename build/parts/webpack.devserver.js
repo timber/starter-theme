@@ -1,3 +1,6 @@
+const path = require('path');
+const mime = require('mime');
+
 module.exports = () => ({
   before: (app, server, compiler) => {
     

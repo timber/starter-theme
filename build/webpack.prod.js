@@ -29,13 +29,13 @@ module.exports = merge(common, {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          test: /\/node_modules\//,
+          test: /[\\/]node_modules[\\/]/,
           chunks: 'initial', // statically imported modules; excludes other types of imported modules (e.g. async)
           name: 'vendor',
           enforce: true // overrides webpack default min size for splitting
         },
         common: {
-          test: /\/src\/scripts\//,
+          test: /[\\/]src[\\/]scripts[\\/]/,
           chunks: 'initial',
           name: 'common',
           enforce: true

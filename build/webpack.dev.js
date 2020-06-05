@@ -1,6 +1,5 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const mime = require('mime');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const common = require('./webpack.common');
