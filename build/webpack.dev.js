@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const common = require('./webpack.common');
 const paths = require('./parts/webpack.paths');
 const browserSyncConfig = require('./parts/webpack.browsersync');
+const devServerConfig = require('./parts/webpack.devserver');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -38,18 +39,5 @@ module.exports = merge(common, {
       ]
     })
   ],
-  devServer: {
-    before: app => {
-      // Intercept all requests for static assets that aren't js files and send a (most-likely) empty response to satisfy PHP
-      app.get(/^((?!js).)*$/, (req, res) => {
-        const mimeType = mime.getType(req.url.split('?')[0]);
-        res.setHeader('Content-Type', mimeType);
-        res.send('');
-      });
-    },
-    overlay: true,
-    compress: true,
-    hot: true,
-    port: 9000
-  }
+  devServer: devServerConfig()
 });
