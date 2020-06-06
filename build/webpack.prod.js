@@ -1,9 +1,10 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const glob = require('glob-all');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PurgeCssPlugin = require('purgecss-webpack-plugin');
 const common = require('./webpack.common');
 const paths = require('./parts/webpack.paths');
 
@@ -47,7 +48,7 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: '../styles/[name].css'
     }),
-    new PurgecssPlugin({
+    new PurgeCssPlugin({
       paths: glob.sync(
         [
           path.join(paths.src, '*.js'),
@@ -56,6 +57,16 @@ module.exports = merge(common, {
         ],
         { nodir: true }
       )
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: {
+        discardComments: {
+          removeAll: true
+        },
+        safe: true
+      },
+      canPrint: false
     })
   ]
 });

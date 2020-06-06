@@ -1,10 +1,7 @@
-const path = require('path');
 const merge = require('webpack-merge');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const common = require('./webpack.common');
-const paths = require('./parts/webpack.paths');
-const browserSyncConfig = require('./parts/webpack.browsersync');
+const browserSync = require('./parts/webpack.browsersync');
+const cleanWebpack = require('./parts/webpack.clean');
 const devServerConfig = require('./parts/webpack.devserver');
 
 module.exports = merge(common, {
@@ -30,13 +27,8 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new BrowserSyncPlugin(...browserSyncConfig()),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        '**/*',
-        path.join(paths.build, 'styles/**/*.css')
-      ]
-    })
+    browserSync(),
+    cleanWebpack()
   ],
   devServer: devServerConfig()
 });

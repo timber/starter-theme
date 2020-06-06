@@ -4,10 +4,18 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const common = require('./webpack.common');
 const dev = require('./webpack.dev');
 const prod = require('./webpack.prod');
+const cleanWebpack = require('./parts/webpack.clean');
 
 const configs = [common];
 
-configs.push(process.env.ANALYZE === 'development' ? dev : prod);
+// analyzes production config by default
+if (!process.env.ANALYZE || process.env.ANALYZE === 'production') {
+  configs.push(prod, { plugins: [cleanWebpack()] });
+}
+
+if (process.env.ANALYZE === 'development') {
+  configs.push(dev);
+}
 
 configs.push({
   plugins: [

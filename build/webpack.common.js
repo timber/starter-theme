@@ -8,6 +8,7 @@ module.exports = {
   },
   output: {
     path: paths.output,
+    chunkFilename: '[name].js',
     filename: '[name].js'
   },
   externals: {
