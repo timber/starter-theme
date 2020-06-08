@@ -1,10 +1,12 @@
 require('dotenv').config();
 const merge = require('webpack-merge');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const common = require('./webpack.common');
 const dev = require('./webpack.dev');
 const prod = require('./webpack.prod');
 const cleanWebpack = require('./parts/webpack.clean');
+const smp = new SpeedMeasurePlugin();
 
 const configs = [common];
 
@@ -26,4 +28,6 @@ configs.push({
   ]
 });
 
-module.exports = merge(...configs);
+const config = smp.wrap(merge(...configs));
+
+module.exports = config;
