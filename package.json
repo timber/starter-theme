@@ -19,6 +19,8 @@
     "css-loader": "^3.5.3",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
+    "eslint": "^7.2.0",
+    "eslint-loader": "^4.0.2",
     "file-loader": "^6.0.0",
     "glob-all": "^3.2.1",
     "mime": "^2.4.6",
