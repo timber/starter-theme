@@ -9,4 +9,4 @@ module.exports = () => {
       path.join(paths.build, 'styles/**/*.css')
     ]
   });
-}
+};
