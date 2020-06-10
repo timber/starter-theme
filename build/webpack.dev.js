@@ -3,6 +3,7 @@ const common = require('./webpack.common');
 const browserSync = require('./parts/webpack.browsersync');
 const cleanWebpack = require('./parts/webpack.clean');
 const devServerConfig = require('./parts/webpack.devserver');
+const loaders = require('./parts/webpack.loaders');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -10,6 +11,15 @@ module.exports = merge(common, {
   watch: true,
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          loaders.eslint({
+            configFile: 'build/eslint/dev.js'
+          })
+        ]
+      },
       {
         test: /\.s[ac]ss$/i,
         use: [
