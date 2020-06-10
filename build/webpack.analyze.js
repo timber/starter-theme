@@ -8,21 +8,24 @@ const prod = require('./webpack.prod');
 const cleanWebpack = require('./parts/webpack.clean');
 const smp = new SpeedMeasurePlugin();
 
+const {
+  ANALYZE,
+  BUNDLE_ANALYZER_PORT
+} = process.env;
+
 const configs = [common];
 
 // analyzes production config by default
-if (!process.env.ANALYZE || process.env.ANALYZE === 'production') {
-  configs.push(prod, { plugins: [cleanWebpack()] });
-}
-
-if (process.env.ANALYZE === 'development') {
+if (ANALYZE === 'development') {
   configs.push(dev);
+} else {
+  configs.push(prod, { plugins: [cleanWebpack()] });
 }
 
 configs.push({
   plugins: [
     new BundleAnalyzerPlugin({
-      analyzerPort: 8887,
+      analyzerPort: BUNDLE_ANALYZER_PORT || 8887,
       openAnalyzer: false
     })
   ]
