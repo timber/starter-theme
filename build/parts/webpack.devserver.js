@@ -1,7 +1,7 @@
 const path = require('path');
 const mime = require('mime');
 
-module.exports = () => ({
+module.exports = {
   before: (app, server, compiler) => {
     
     compiler.hooks.shouldEmit.tap('interceptor', compilation => {
@@ -36,4 +36,4 @@ module.exports = () => ({
   compress: true,
   hot: true,
   port: 9000
-});
+};

@@ -2,7 +2,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const browserSync = require('./parts/webpack.browsersync');
 const cleanWebpack = require('./parts/webpack.clean');
-const devServerConfig = require('./parts/webpack.devserver');
+const devServer = require('./parts/webpack.devserver');
 const loaders = require('./parts/webpack.loaders');
 
 module.exports = merge(common, {
@@ -40,5 +40,5 @@ module.exports = merge(common, {
     browserSync(),
     cleanWebpack()
   ],
-  devServer: devServerConfig()
+  devServer
 });

@@ -8,6 +8,9 @@ module.exports = {
   "parserOptions": {
       "ecmaVersion": 11
   },
+  "globals": {
+      "jQuery": "writable"
+  },
   "rules": {
       "linebreak-style": [
           "error",
