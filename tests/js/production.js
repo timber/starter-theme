@@ -10,7 +10,7 @@ describe('Production', function() {
 
   before(function(done) {
     this.timeout(0);
-  
+
     exec('webpack --config tests/js/webpack/webpack.prod.test.js', error => {
       if (error) {
         console.log(error.stack);
@@ -52,8 +52,34 @@ describe('Production', function() {
   });
 
   context('Other Assets', function() {
-    it('should be copied into the build folder while retaining their full src folder path', () => {
-      
+    it('should be copied into the build folder while retaining their full src folder path', done => {
+      getCopiedAssets('placeholder.png')
+        .then(paths => {
+          const [ buildPath, srcPath ] = paths;
+          const regexp = /\/images\/placeholder\.png$/;
+          expect(buildPath).to.match(regexp);
+          expect(srcPath).to.match(regexp);
+          done();
+        })
+        .catch(done);
     });
   });
 });
+
+const getCopiedAssets = assetName => {
+  return new Promise((resolve, reject) => {
+    new Promise(resolve => {
+      exec(`find ${paths.build} -name ${assetName}`, (error, stdout) => {
+        resolve([ stdout.trim() ]);
+      });
+    })
+    .then(paths => new Promise(resolve => {
+      exec(`find ${path.resolve(__dirname, 'webpack')} -name ${assetName}`, (error, stdout) => {
+        paths.push(stdout.trim());
+        resolve(paths);
+      });
+    }))
+    .then(paths => resolve(paths))
+    .catch(reject);
+  });
+};
