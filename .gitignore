@@ -2,7 +2,8 @@ vendor
 wp-content
 composer.lock
 /node_modules
-static/styles
-static/scripts
+static/*
+!static/no-timber.html
+!static/site.js
 yarn-error.log
 .env
