@@ -22,6 +22,15 @@ describe('Production', function() {
     });
   });
 
+  context('Scripts', function() {
+    
+    it('should output a minified js file', () => {
+      const inputFileSize = fs.statSync(path.join(__dirname, 'webpack/src/main.js')).size;
+      const outputFileSize = fs.statSync(path.join(paths.output, 'site.js')).size;
+      expect(inputFileSize).to.be.above(outputFileSize);
+    });
+  });
+
   context('Styles', function() {
 
     it('should separate css from the bundle', done => {
@@ -39,6 +48,12 @@ describe('Production', function() {
         expect(data).to.equal('body{background:red}');
         done();
       });
+    });
+  });
+
+  context('Other Assets', function() {
+    it('should be copied into the build folder while retaining their full src folder path', () => {
+      
     });
   });
 });
