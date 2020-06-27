@@ -1,3 +1,4 @@
+const http = require('http');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const browserSync = require('browser-sync');
@@ -28,7 +29,11 @@ describe('Development', function() {
     devServer.close(done);
   });
 
-  it('should work', () => {
-    console.log('works');
+  it('should redirect to the asset being served via WDS', done => {
+    http.get('http://localhost:3000/wp-content/themes/timber-copy/static/scripts/site.js', res => {
+      expect(res.statusCode).to.match(/^3[\d]{2}$/);
+      expect(res.headers.location).to.have.string(`localhost:${config.devServer.port}`);
+      done();
+    });
   });
 });

@@ -11,7 +11,8 @@
     "prod": "webpack --config build/webpack.prod.js",
     "analyze": "nodemon --watch 'build/**/webpack.*.js' --watch '.env' --exec \"webpack --config build/webpack.analyze.js\"",
     "lint-build": "eslint --ext .js build",
-    "test": "mocha ./tests/js/index.js --exit"
+    "test": "mocha ./tests/js/index.js --exit",
+    "test:watch": "nodemon --watch 'tests/js/**/*.js' --exec \"yarn test\""
   },
   "devDependencies": {
     "bootstrap": "^4.5.0",

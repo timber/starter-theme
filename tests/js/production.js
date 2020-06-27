@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const paths = require('../../build/parts/webpack.paths');
 const { exec } = require('child_process');
-const { expect } = require('chai');
+const paths = require('../../build/parts/webpack.paths');
 
 const outputCSSPath = path.join(paths.build, 'styles/site.css');
 

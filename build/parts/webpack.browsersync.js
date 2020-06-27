@@ -1,6 +1,6 @@
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-module.exports = () => {
+module.exports = (browserSyncOptions = {}, pluginOptions = {}) => {
   return new BrowserSyncPlugin({
     open: false,
     host: 'localhost',
@@ -11,8 +11,10 @@ module.exports = () => {
     reloadDebounce: 2000,
     files: [
       '*.php'
-    ]
+    ],
+    ...browserSyncOptions
   }, {
-    reload: false
+    reload: false,
+    ...pluginOptions
   });
 };
