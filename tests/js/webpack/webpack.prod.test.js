@@ -6,7 +6,7 @@ const cleanWebpack = require('../../../build/parts/webpack.clean');
 const paths = require('../../../build/parts/webpack.paths');
 const overrides = require('./webpack.overrides.test');
 
-delete prod.entry;
+prod.entry = {};
 
 module.exports = merge(prod, overrides, {
   plugins: [
