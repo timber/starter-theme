@@ -5,7 +5,7 @@
 		function setUp() {
 			self::_setupStarterTheme();
 			switch_theme( basename( dirname( dirname( __FILE__ ) ) ) );
-			require_once(__DIR__.'/../functions.php');
+			require_once(__DIR__.'/../theme/functions.php');
 		}
 
 		function tearDown() {
