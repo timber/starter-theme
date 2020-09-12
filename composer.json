@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-	  "timber/timber": "1.*"
+	  "timber/timber": "master"
   },
   "require-dev": {
     "phpunit/phpunit": "5.7.16|6.*"
