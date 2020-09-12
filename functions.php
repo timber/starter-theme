@@ -35,7 +35,7 @@ if ( ! class_exists( 'Timber' ) ) {
 	add_filter(
 		'template_include',
 		function( $template ) {
-			return dirname( get_stylesheet_directory() ) . '/static/no-timber.html';
+			return get_stylesheet_directory() . '/static/no-timber.html';
 		}
 	);
 	return;
