@@ -1,10 +1,10 @@
 <?php
 
-	class TestTimberStarterTheme extends WP_UnitTestCase {
+	class TestTimberStarterTheme extends \WorDBless\BaseTestCase {
 
 		function setUp() {
 			self::_setupStarterTheme();
-			switch_theme( basename( dirname( dirname( __FILE__ ) ) ) );
+			switch_theme( basename( dirname( dirname( __FILE__ ) ) ) . '/theme' );
 			require_once(__DIR__.'/../theme/functions.php');
 		}
 
