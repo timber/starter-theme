@@ -1,10 +1,11 @@
-sudo: false
-
-dist: xenial
-
-services: mysql
-
 language: php
+os:
+  - linux
+dist: bionic
+
+cache:
+  directories:
+    - "${HOME}/.composer/cache"
 
 php:
     - 7.4
@@ -13,7 +14,7 @@ env:
     - WP_VERSION=latest WP_MULTISITE=0
     - WP_VERSION=latest WP_MULTISITE=1
 
-before_script:
+install:
     - composer update
 
 script:
