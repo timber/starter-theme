@@ -48,7 +48,7 @@ class TestTimberStarterTheme extends \WorDBless\BaseTestCase {
 	static function _setupStarterTheme(){
 		$baseName = basename( dirname( __DIR__ ) );
 		$src  = realpath( dirname( dirname( __DIR__ ) ) . '/' . $baseName );
-		$dest = realpath( WP_CONTENT_DIR . '/themes/' . $baseName );
+		$dest = WP_CONTENT_DIR . '/themes/' . $baseName;
 		if ( is_dir($src) && ! file_exists($dest) ) {
 			symlink($src, $dest);
 		}
