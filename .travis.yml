@@ -10,10 +10,6 @@ cache:
 php:
     - 7.4
 
-env:
-    - WP_VERSION=latest WP_MULTISITE=0
-    - WP_VERSION=latest WP_MULTISITE=1
-
 install:
     - composer update
 
