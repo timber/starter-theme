@@ -10,6 +10,9 @@ cache:
 php:
     - 7.4
 
+before_install:
+    - composer validate --strict
+
 install:
     - composer update
 
