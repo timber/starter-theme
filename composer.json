@@ -16,9 +16,19 @@
     }
   ],
   "require": {
-	  "timber/timber": "dev-2.x-term-factories"
+    "timber/timber": "dev-2.x-term-factories"
   },
   "require-dev": {
-    "phpunit/phpunit": "5.7.16|6.*"
+    "phpunit/phpunit": "7.*",
+    "roots/wordpress": "^5.4",
+    "automattic/wordbless": "^0.1.0"
+  },
+  "extra": {
+    "installer-paths": {
+      "vendor/automattic/wordbless/": [
+        "automattic/wordbless"
+      ]
+    },
+    "wordpress-install-dir": "wordpress"
   }
 }
