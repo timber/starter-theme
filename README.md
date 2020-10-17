@@ -3,7 +3,7 @@
 
 The "_s" for Timber: a dead-simple theme that you can build from. The primary purpose of this theme is to provide a file structure rather than a framework for markup or styles. Configure your Sass, scripts, and task runners however you would like!
 
-[![Build Status](https://travis-ci.org/timber/starter-theme.svg)](https://travis-ci.org/timber/starter-theme)
+[![Build Status](https://travis-ci.com/timber/starter-theme.svg?branch=master)](https://travis-ci.come/github/timber/starter-theme)
 
 ## Installing the Theme
 
@@ -13,7 +13,7 @@ Install this theme as you would any other, and be sure the Timber plugin is acti
 2. Download the zip for this theme (or clone it) and move it to `wp-content/themes` in your WordPress installation. 
 3. Rename the folder to something that makes sense for your website (generally no spaces and all lowercase). You could keep the name `timber-starter-theme` but the point of a starter theme is to make it your own!
 4. Activate the theme in Appearance >  Themes.
-5. Do your thing! And read [the docs](https://github.com/jarednova/timber/wiki).
+5. Do your thing! And read [the docs](https://timber.github.io/docs/).
 
 ## What's here?
 
@@ -24,8 +24,6 @@ Install this theme as you would any other, and be sure the Timber plugin is acti
 `bin/` and `tests/` ... basically don't worry about (or remove) these unless you know what they are and want to.
 
 ## Other Resources
-
-The [main Timber Wiki](https://github.com/jarednova/timber/wiki) is super great, so reference those often. Also, check out these articles and projects for more info:
 
 * [This branch](https://github.com/laras126/timber-starter-theme/tree/tackle-box) of the starter theme has some more example code with ACF and a slightly different set up.
 * [Twig for Timber Cheatsheet](http://notlaura.com/the-twig-for-timber-cheatsheet/)
