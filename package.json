@@ -15,6 +15,7 @@
     "test:watch": "nodemon --watch 'tests/js/**/*.js' --exec \"yarn test\""
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "bootstrap": "^4.5.0",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
@@ -33,6 +34,7 @@
     "mocha": "^8.0.1",
     "nodemon": "^2.0.4",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "popper.js": "^1.16.1",
     "purgecss-webpack-plugin": "^2.2.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",

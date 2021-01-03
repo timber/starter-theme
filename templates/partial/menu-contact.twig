@@ -1,0 +1,9 @@
+{% filter shortcodes %}
+  {% if not is_mobile %}<small>{% endif %}
+    [contact_info username="{{username}}" template="{{is_mobile ? 'menu' : 'menu-long'}}" wrapper="false" include="phone_number,admin_email"]
+  {% if not is_mobile %}</small>{% endif %}
+
+  {% if not is_mobile %}<small>{% endif %}
+    [contact_info template="menu" wrapper="false" exclude="user_email" include="facebook,instagram"]
+  {% if not is_mobile %}</small>{% endif %}
+{% endfilter %}
