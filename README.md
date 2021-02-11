@@ -23,7 +23,7 @@ Install this theme as you would any other, and be sure the Timber plugin is acti
 
 `views/` contains all of your Twig templates. These pretty much correspond 1 to 1 with the PHP files that respond to the WordPress template hierarchy. At the end of each PHP template, you’ll notice a `Timber::render()` function whose first parameter is the Twig file where that data (or `$context`) will be used. Just an FYI.
 
-`bin/` and `tests/` ... basically don't worry about (or remove) these unless you know what they are and want to.
+`tests/` ... basically don't worry about (or remove) this unless you know what it is and want to.
 
 ## Other Resources
 
