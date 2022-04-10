@@ -15,7 +15,7 @@ $context          = Timber::context();
 $context['posts'] = new Timber\PostQuery();
 if ( isset( $wp_query->query_vars['author'] ) ) {
 	$factory = new Timber\Factory\UserFactory();
-        $author = $factory->from((int) $wp_query->query_vars['author']);
+	$author = $factory->from((int) $wp_query->query_vars['author']);
 	if ($author) {
 		$context['author'] = $author;
 		$context['title']  = 'Author Archives: ' . $author->name();
