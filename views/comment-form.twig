@@ -1,28 +1,28 @@
 <div class="comment-form">
-    <h2>{{ _e('Add comment.', 'starter-theme') }}</h2>
-    <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
-        {% if  user %}
-            <input type="hidden" name="email" value="{{ user.email }}">
-            <input type="hidden" name="author" value="{{ user.name }}">
-            <input type="hidden" name="url" value="{{ user.link }}">
-        {% else %}
-            <label for="email">{{ _e('Email:', 'starter-theme') }}<br>
-                <input required name="email" type="email" id="email">
-            </label>
-            <label for="author">{{ _e('Author:', 'starter-theme') }}{{ _e('Name:', 'starter-theme') }}<br>
-                <input required name="author" type="text">
-            </label>
-            <label for="url">{{ _e('Website:', 'starter-theme') }}<br>
-                <input name="url" type="url">
-            </label>
-        {% endif %}
-        <label for="comment">{{ _e('Comment:', 'starter-theme') }}<br>
-            <textarea placeholder="{{ _e('Leave a comment...:', 'starter-theme') }}" name="comment" cols="60" rows="3"></textarea>
-        </label>
-        <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
-        <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
-        <button type="submit" name="Submit" class="btn">{{ _e('Send', 'starter-theme') }}</button>
-        <button type="reset">{{ _e('Cancel', 'starter-theme') }}</button>
-        <p>{{ _e('Your comment will be revised by the site if needed.', 'starter-theme') }}</p>
-    </form>
+	<h2>{{ _e('Add comment.', 'starter-theme') }}</h2>
+	<form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
+		{% if  user %}
+			<input type="hidden" name="email" value="{{ user.email }}">
+			<input type="hidden" name="author" value="{{ user.name }}">
+			<input type="hidden" name="url" value="{{ user.link }}">
+		{% else %}
+			<label for="email">{{ _e('Email:', 'starter-theme') }}<br>
+				<input required name="email" type="email" id="email">
+			</label>
+			<label for="author">{{ _e('Author:', 'starter-theme') }}{{ _e('Name:', 'starter-theme') }}<br>
+				<input required name="author" type="text">
+			</label>
+			<label for="url">{{ _e('Website:', 'starter-theme') }}<br>
+				<input name="url" type="url">
+			</label>
+		{% endif %}
+		<label for="comment">{{ _e('Comment:', 'starter-theme') }}<br>
+			<textarea placeholder="{{ _e('Leave a comment...:', 'starter-theme') }}" name="comment" cols="60" rows="3"></textarea>
+		</label>
+		<input name="comment_post_ID" value="{{ post.id }}" type="hidden">
+		<input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
+		<button type="submit" name="Submit" class="btn">{{ _e('Send', 'starter-theme') }}</button>
+		<button type="reset">{{ _e('Cancel', 'starter-theme') }}</button>
+		<p>{{ _e('Your comment will be revised by the site if needed.', 'starter-theme') }}</p>
+	</form>
 </div>

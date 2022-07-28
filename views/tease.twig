@@ -1,9 +1,9 @@
-<article class="tease tease-{{post.type}}" id="tease-{{post.id}}">
+<article class="tease tease-{{ post.type }}" id="tease-{{ post.id }}">
 	{% block content %}
-		<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
+		<h2 class="h2"><a href="{{ post.link }}">{{ post.title }}</a></h2>
 		<p>{{ post.excerpt }}</p>
 		{% if post.thumbnail %}
-            {% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
+			{% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
 			<img src="{{ post.thumbnail.src }}" alt="{{ altTitle }}" />
 		{% endif %}
 	{% endblock %}

@@ -38,6 +38,7 @@ if ( ! class_exists( 'Timber' ) ) {
 			return dirname( get_stylesheet_directory() ) . '/static/no-timber.html';
 		}
 	);
+
 	return;
 }
 
@@ -58,6 +59,7 @@ Timber::$autoescape = false;
  * You can move this to its own file and include here via php's include("MySite.php")
  */
 class StarterSite extends Timber\Site {
+
 	/** Add timber support. */
 	public function __construct() {
 		add_action( 'after_setup_theme', [$this, 'theme_supports']);
@@ -67,10 +69,12 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', [$this, 'register_taxonomies']);
 		parent::__construct();
 	}
+
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
 
 	}
+
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
 
@@ -86,6 +90,7 @@ class StarterSite extends Timber\Site {
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
+
 		return $context;
 	}
 
@@ -119,7 +124,7 @@ class StarterSite extends Timber\Site {
 				'comment-list',
 				'gallery',
 				'caption',
-            ]
+			]
 		);
 
 		/*
@@ -137,7 +142,7 @@ class StarterSite extends Timber\Site {
 				'link',
 				'gallery',
 				'audio',
-            ]
+			]
 		);
 
 		add_theme_support( 'menus' );
@@ -149,6 +154,7 @@ class StarterSite extends Timber\Site {
 	 */
 	public function myfoo( $text ) {
 		$text .= ' bar!';
+
 		return $text;
 	}
 
@@ -159,9 +165,9 @@ class StarterSite extends Timber\Site {
 	public function add_to_twig( $twig ) {
 		$twig->addExtension( new Twig\Extension\StringLoaderExtension() );
 		$twig->addFilter( new Twig\TwigFilter( 'myfoo', [$this, 'myfoo']) );
+
 		return $twig;
 	}
-
 }
 
 new StarterSite();

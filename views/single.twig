@@ -3,18 +3,18 @@
 {% block content %}
 	<div class="content-wrapper">
 		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-            {% if post.thumbnail.src %}
-                {% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
-                <img src="{{ post.thumbnail.src|resize(1200, 300) }}" alt="{{ altTitle }}" />
-            {% endif %}
+			{% if post.thumbnail.src %}
+				{% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
+				<img src="{{ post.thumbnail.src|resize(1200, 300) }}" alt="{{ altTitle }}" />
+			{% endif %}
 			<section class="article-content">
 				<h1 class="article-h1">{{ post.title }}</h1>
 				<a href="{{ post.link }}">{{ _e( 'edit' ) }}</a>
 				<p class="blog-author">
 					<span>{{ _e('By', 'starter-theme') }}</span>
-                    <a href="{{post.author.path}}"> {{ post.author.name }} </a>
-                    <span>&bull;</span>
-                    <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
+					<a href="{{post.author.path}}"> {{ post.author.name }} </a>
+					<span>&bull;</span>
+					<time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
 				</p>
 				<div class="article-body">
 					{{ post.content }}
@@ -25,19 +25,19 @@
 			<section class="comment-box">
 				<!-- comments -->
 				<div class="comments">
-				    {% if post.comments %}
-					    <h2>{{ _e('Comments', 'starter-theme') }}</h2>
-                        {% for cmt in post.comments %}
-                            {% include "comment.twig" with {comment:cmt} %}
-                        {% endfor %}
-				    {% endif %}
+					{% if post.comments %}
+						<h2>{{ _e('Comments', 'starter-theme') }}</h2>
+						{% for cmt in post.comments %}
+							{% include "comment.twig" with { comment:cmt } %}
+						{% endfor %}
+					{% endif %}
 				</div>
 
 				{% if post.comment_status == "closed" %}
 					<p>{{ _e('Comments for this post are closed', 'starter-theme') }}</p>
 				{% else %}
-				    <!-- comment form -->
-				    {% include "comment-form.twig" %}
+					<!-- comment form -->
+					{% include "comment-form.twig" %}
 				{% endif %}
 			</section>
 		</article>

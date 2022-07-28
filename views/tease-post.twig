@@ -1,10 +1,10 @@
 {% extends "tease.twig" %}
 
 {% block content %}
-	<h2 class="h2"><a href="{{post.link}}">{{ post.title }}</a></h2>
+	<h2 class="h2"><a href="{{ post.link }}">{{ post.title }}</a></h2>
 		<p>{{ post.excerpt({ words:5, read_more: __( "Keep reading",'starter-theme' ) }) }}</p>
 		{% if post.thumbnail.src %}
-            {% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
+			{% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
 			<img src="{{ post.thumbnail.src }}" alt="{{ altTitle }}" />
 		{% endif %}
 {% endblock %}
