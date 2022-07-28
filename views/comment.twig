@@ -9,7 +9,7 @@
 
 		<!-- child comments -->
 		{% if post.comments %}
-			<h4> {{ _e('replies', 'starter-theme') }} </h4>
+			<h2> {{ _e('replies', 'starter-theme') }} </h2>
 			<div class="comments">
 				{% for cmt in comment.children %}
 					{% include "comment.twig" with { comment:cmt } %}
