@@ -23,7 +23,7 @@
 				<!-- comments -->
 				<div class="comments">
 				    {% if post.comments %}
-					    <h3>{{ _e('Comments', 'starter-theme') }}</h3>
+					    <h2>{{ _e('Comments', 'starter-theme') }}</h2>
                         {% for cmt in post.comments %}
                             {% include "comment.twig" with {comment:cmt} %}
                         {% endfor %}

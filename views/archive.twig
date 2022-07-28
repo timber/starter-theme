@@ -1,9 +1,9 @@
-{# This file demonstrates using most of the index.twig template and modifying 
+{# This file demonstrates using most of the index.twig template and modifying
    just a small part. See `search.twig` for an example of another approach #}
 
 {% extends "index.twig" %}
 
 {% block content %}
-  <h3>{{  _e('This is my archive', 'starter-theme') }}</h3>
+  <h2>{{  _e('This is my archive', 'starter-theme') }}</h2>
   {{ parent() }}
 {% endblock %}

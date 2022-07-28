@@ -1,9 +1,9 @@
 <div class="blog-comment {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
-	<h5 class="comment-author">{{comment.author.name}} {{ _e('says', 'starter-theme') }}</h5>
+	<h2 class="comment-author">{{comment.author.name}} {{ _e('says', 'starter-theme') }}</h2>
 	<div class="comment-content">{{comment.comment_content|wpautop}}</div>
 
 	<section class="comment-box">
-		
+
 		<!-- comment form -->
 		{% include "comment-form.twig" %}
 
