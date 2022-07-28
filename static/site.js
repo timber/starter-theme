@@ -1,5 +1,3 @@
-jQuery( document ).ready( function( $ ) {
-
-  // Your JavaScript goes here
+document.addEventListener("DOMContentLoaded", () => {
 
 });

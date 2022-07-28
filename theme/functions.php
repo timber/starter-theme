@@ -44,7 +44,7 @@ if ( ! class_exists( 'Timber' ) ) {
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
-Timber::$dirname = array( '../views' );
+Timber::$dirname = ['../views'];
 
 /**
  * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
@@ -60,11 +60,11 @@ Timber::$autoescape = false;
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
-		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
-		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
-		add_action( 'init', array( $this, 'register_post_types' ) );
-		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'after_setup_theme', [$this, 'theme_supports']);
+		add_filter( 'timber/context', [$this, 'add_to_context']);
+		add_filter( 'timber/twig', [$this, 'add_to_twig']);
+		add_action( 'init', [$this, 'register_post_types']);
+		add_action( 'init', [$this, 'register_taxonomies']);
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
@@ -114,12 +114,12 @@ class StarterSite extends Timber\Site {
 		 */
 		add_theme_support(
 			'html5',
-			array(
+			[
 				'comment-form',
 				'comment-list',
 				'gallery',
 				'caption',
-			)
+            ]
 		);
 
 		/*
@@ -129,7 +129,7 @@ class StarterSite extends Timber\Site {
 		 */
 		add_theme_support(
 			'post-formats',
-			array(
+			[
 				'aside',
 				'image',
 				'video',
@@ -137,7 +137,7 @@ class StarterSite extends Timber\Site {
 				'link',
 				'gallery',
 				'audio',
-			)
+            ]
 		);
 
 		add_theme_support( 'menus' );
@@ -158,7 +158,7 @@ class StarterSite extends Timber\Site {
 	 */
 	public function add_to_twig( $twig ) {
 		$twig->addExtension( new Twig\Extension\StringLoaderExtension() );
-		$twig->addFilter( new Twig\TwigFilter( 'myfoo', array( $this, 'myfoo' ) ) );
+		$twig->addFilter( new Twig\TwigFilter( 'myfoo', [$this, 'myfoo']) );
 		return $twig;
 	}
 
