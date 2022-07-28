@@ -3,7 +3,8 @@
 		<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
 		<p>{{ post.excerpt }}</p>
 		{% if post.thumbnail %}
-			<img src="{{post.thumbnail.src}}" />
+            {% set altTitle = post.thumbnail._wp_attachment_image_alt ? post.thumbnail._wp_attachment_image_alt : post.title %}
+			<img src="{{ post.thumbnail.src }}" alt="{{ altTitle }}" />
 		{% endif %}
 	{% endblock %}
 </article>
