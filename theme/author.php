@@ -16,6 +16,6 @@ $context['posts'] = new Timber\PostQuery();
 if ( isset( $wp_query->query_vars['author'] ) ) {
 	$author            = new Timber\User( $wp_query->query_vars['author'] );
 	$context['author'] = $author;
-	$context['title']  = 'Author Archives: ' . $author->name();
+	$context['title']  = sprintf(__( 'Author Archives: %s', 'starter-theme' ), $author->name());
 }
 Timber::render( array( 'author.twig', 'archive.twig' ), $context );
