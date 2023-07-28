@@ -5,7 +5,7 @@ class TestTimberStarterTheme extends \WorDBless\BaseTestCase {
 	function setUp() {
 		self::_setupStarterTheme();
 		switch_theme( basename( dirname( __DIR__ ) ) . '/theme' );
-		require_once dirname( __DIR__ ) . '/theme/functions.php';
+		require_once dirname( __DIR__ ) . '/functions.php';
 		// WorDBless includes wp-settings.php
 		do_action( 'after_setup_theme' );
 	}
