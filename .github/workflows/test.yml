@@ -29,38 +29,32 @@ jobs:
         php: ['7.4', '8.0', '8.1']
         wp: ['latest']
         multisite: ['0', '1']
-        dependency-version: ['highest']
         extensions: ['gd']
         experimental: [false]
         include:
           # WP Trunk
           - php: '7.4'
             wp: 'trunk'
-            dependency-version: 'highest'
             multisite: '0'
             experimental: true
           # PHP 8.0
           - php: '8.0'
             wp: 'latest'
-            dependency-version: 'prefer-stable'
             multisite: '0'
             experimental: false
           # PHP 8.1
           - php: '8.1'
             wp: 'latest'
-            dependency-version: 'prefer-stable'
             multisite: '0'
             experimental: false
           # PHP 8.1 / experimental
           - php: '8.1'
             wp: 'trunk'
-            dependency-version: 'highest'
             multisite: '0'
             experimental: true
           # PHP 8.2 / experimental
           - php: '8.2'
             wp: 'trunk'
-            dependency-version: 'highest'
             multisite: '0'
             experimental: true
 
@@ -82,8 +76,6 @@ jobs:
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - uses: ramsey/composer-install@v2
-        with:
-            dependency-versions: ${{ matrix.dependency-version }}
 
       - name: Run tests
         run: composer run test
