@@ -15,12 +15,17 @@ Then,
 2. Activate the theme in the WordPress Dashboard under **Appearance → Themes**.
 3. Do your thing! And read [the docs](https://timber.github.io/docs/).
 
-Small tip: You can make use of Composer’s [autoloading functionality](https://getcomposer.org/doc/04-schema.md#psr-4) to automatically load your PHP classes when they are requested instead of requiring the one by one in **functions.php**.
+## The `StarterSite` class
 
-## What’s here?
+In **functions.php**, we call `new StarterSite();`. The `StarterSite` class sits in the **src** folder. You can update this class to add functionality to your theme. This approach is just one example for how you could do it.
+
+The **src** folder would be the right place to put your classes that [extend Timber’s functionality](https://timber.github.io/docs/v2/guides/extending-timber/).
+
+Small tip: You can make use of Composer’s [autoloading functionality](https://getcomposer.org/doc/04-schema.md#psr-4) to automatically load your PHP classes when they are requested instead of requiring one by one in **functions.php**.
+
+## What else is there?
 
 - `static/` is where you can keep your static front-end scripts, styles, or images. In other words, your Sass files, JS files, fonts, and SVGs would live here.
-- `theme/` contains all of the PHP and other files needed by WordPress. When using the Timber Starter Theme as a parent theme, you need to include the theme directory in your child theme’s `style.css` docblock like so: `Template: timber-starter-theme/theme`
 - `views/` contains all of your Twig templates. These pretty much correspond 1 to 1 with the PHP files that respond to the WordPress template hierarchy. At the end of each PHP template, you’ll notice a `Timber::render()` function whose first parameter is the Twig file where that data (or `$context`) will be used. Just an FYI.
 - `tests/` ... basically don’t worry about (or remove) these unless you know what they are and want to.
 
