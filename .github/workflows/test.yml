@@ -1,0 +1,83 @@
+name: Timber starter theme tests
+
+on:
+  push:
+    branches:
+      - '1.x'
+      - '2.x'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - ready_for_review
+
+# Cancel previous workflow run groups that have not completed.
+concurrency:
+  # Group workflow runs by workflow name, along with the head branch ref of the pull request
+  # or otherwise the branch or tag ref.
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.0', '8.1']
+        wp: ['latest']
+        multisite: ['0', '1']
+        extensions: ['gd']
+        experimental: [false]
+        include:
+          # WP Trunk
+          - php: '7.4'
+            wp: 'trunk'
+            multisite: '0'
+            experimental: true
+          # PHP 8.0
+          - php: '8.0'
+            wp: 'latest'
+            multisite: '0'
+            experimental: false
+          # PHP 8.1
+          - php: '8.1'
+            wp: 'latest'
+            multisite: '0'
+            experimental: false
+          # PHP 8.1 / experimental
+          - php: '8.1'
+            wp: 'trunk'
+            multisite: '0'
+            experimental: true
+          # PHP 8.2 / experimental
+          - php: '8.2'
+            wp: 'trunk'
+            multisite: '0'
+            experimental: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          extensions: curl, date, dom, iconv, json, libxml, gd
+
+      - name: Setup problem matchers for PHP
+        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+
+      - name: Setup problem matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - uses: ramsey/composer-install@v2
+
+      - name: Run tests
+        run: composer run test
+        env:
+          WP_MULTISITE: ${{ matrix.multisite }}

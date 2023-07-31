@@ -3,7 +3,6 @@
   "description": "Starter theme to build a Timber theme",
   "type":"wordpress-theme",
   "license": "MIT",
-  "minimum-stability" : "dev",
   "authors": [
     {
       "email": "jared@upstatement.com",
@@ -20,9 +19,8 @@
     "timber/timber": "2.x-dev"
   },
   "require-dev": {
-    "phpunit/phpunit": "7.*",
-    "roots/wordpress": "^5.4",
-    "automattic/wordbless": "^0.1.0"
+    "automattic/wordbless": "^0.4.2",
+    "yoast/wp-test-utils": "^1.0"
   },
   "extra": {
     "installer-paths": {
@@ -31,5 +29,14 @@
       ]
     },
     "wordpress-install-dir": "wordpress"
+  },
+  "config": {
+    "allow-plugins": {
+      "roots/wordpress-core-installer": true,
+      "composer/installers": true
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }
