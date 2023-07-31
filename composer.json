@@ -9,11 +9,6 @@
       "name": "jarednova"
     }
   ],
-  "autoload": {
-    "psr-4": {
-      "": "src/"
-    }
-  },
   "repositories": [
     {
       "type": "composer",

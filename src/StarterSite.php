@@ -1,9 +1,11 @@
 <?php
 
+use Timber\Site;
+
 /**
  * Class StarterSite
  */
-class StarterSite extends Timber\Site {
+class StarterSite extends Site {
 	public function __construct() {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
