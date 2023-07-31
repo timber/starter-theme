@@ -21,18 +21,6 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mariadb:latest
-        env:
-          MYSQL_USER: root
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: wordpress_test
-        ports:
-          - 3306
-        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=3
-
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
@@ -87,17 +75,8 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: ${{ matrix.coverage && 'pcov' || 'none' }}
           tools: composer:v2
-          extensions: curl, date, dom, iconv, json, libxml, mysql, ${{ matrix.extensions }}
+          extensions: curl, date, dom, iconv, json, libxml, ${{ matrix.extensions }}
           ini-values: pcov.directory=src
-
-      - name: Shutdown default MySQL service
-        run: sudo service mysql stop
-
-      - name: Verify MariaDB connection
-        run: |
-          while ! mysqladmin ping -h"127.0.0.1" -P"${{ job.services.mysql.ports[3306] }}" --silent; do
-            sleep 1
-          done
 
       - name: Setup problem matchers for PHP
         run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
@@ -108,9 +87,6 @@ jobs:
       - uses: ramsey/composer-install@v2
         with:
             dependency-versions: ${{ matrix.dependency-version }}
-
-      - name: Install tests
-        run: bash bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1:${{ job.services.mysql.ports['3306'] }} ${{ matrix.wp }} true
 
       # - name: Setup PCOV
       #   if: ${{ matrix.coverage == true }}
