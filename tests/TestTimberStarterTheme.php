@@ -1,17 +1,27 @@
 <?php
 
-class TestTimberStarterTheme extends \WorDBless\BaseTestCase {
+use Timber\Timber;
+use WorDBless\BaseTestCase;
 
-	function setUp() {
-		self::_setupStarterTheme();
+class TestTimberStarterTheme extends BaseTestCase {
+
+	public function set_up() {
 		switch_theme( basename( dirname( __DIR__ ) ) . '/theme' );
-		require_once dirname( __DIR__ ) . '/functions.php';
+
+		require dirname( __DIR__ ) . '/functions.php';
+
+		Timber::$dirname = array_merge( (array) Timber::$dirname, [ '../views' ] );
+		Timber::$dirname = array_unique( Timber::$dirname );
+
 		// WorDBless includes wp-settings.php
 		do_action( 'after_setup_theme' );
+
+		parent::set_up();
 	}
 
-	function tearDown() {
-		switch_theme('twentythirteen');
+	function tear_down() {
+		parent::tear_down();
+		switch_theme('twentytwenty');
 	}
 
 	function testTimberExists() {
@@ -36,21 +46,11 @@ class TestTimberStarterTheme extends \WorDBless\BaseTestCase {
 	 * Helper test to output current twig version
 	 */
 	function testTwigVersion() {
-		$str = Timber::compile_string("{{ constant('Twig_Environment::VERSION') }}");
-		//error_log('Twig version = '.$str);
+		// $version = Timber::compile_string("{{ version }}", [ 'version', Twig\Environment::VERSION ]);
 	}
 
 	function testTwigFilter() {
-		$str = Timber::compile_string('{{ "foo" | myfoo }}');
+		$str = Timber::compile_string('{{ "foo"|myfoo }}');
 		$this->assertEquals('foo bar!', $str);
-	}
-
-	static function _setupStarterTheme(){
-		$baseName = basename( dirname( __DIR__ ) );
-		$src  = realpath( dirname( dirname( __DIR__ ) ) . '/' . $baseName );
-		$dest = WP_CONTENT_DIR . '/themes/' . $baseName;
-		if ( is_dir($src) && ! file_exists($dest) ) {
-			symlink($src, $dest);
-		}
 	}
 }
