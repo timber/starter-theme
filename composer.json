@@ -35,5 +35,8 @@
       "roots/wordpress-core-installer": true,
       "composer/installers": true
     }
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }

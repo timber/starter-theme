@@ -29,8 +29,6 @@ jobs:
         wp: ['latest']
         multisite: ['0', '1']
         dependency-version: ['highest', 'lowest']
-        webp: [false]
-        coverage: [false]
         extensions: ['gd']
         experimental: [false]
         include:
@@ -73,10 +71,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: ${{ matrix.coverage && 'pcov' || 'none' }}
           tools: composer:v2
           extensions: curl, date, dom, iconv, json, libxml, ${{ matrix.extensions }}
-          ini-values: pcov.directory=src
 
       - name: Setup problem matchers for PHP
         run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
@@ -88,14 +84,7 @@ jobs:
         with:
             dependency-versions: ${{ matrix.dependency-version }}
 
-      # - name: Setup PCOV
-      #   if: ${{ matrix.coverage == true }}
-      #   run: |
-      #     composer require --dev --ignore-platform-reqs pcov/clobber
-      #     vendor/bin/pcov clobber
-
       - name: Run tests
-        if: ${{ !matrix.webp }}
-        run: composer run test:no-cov
+        run: composer run test
         env:
           WP_MULTISITE: ${{ matrix.multisite }}
