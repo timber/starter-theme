@@ -3,7 +3,8 @@ name: Timber starter theme tests
 on:
   push:
     branches:
-      - '*'
+      - '1.x'
+      - '2.x'
   pull_request:
     types:
       - opened
