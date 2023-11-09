@@ -7,7 +7,7 @@ The "_s" for Timber: a dead-simple theme that you can build from. The primary pu
 
 ## Installing the theme
 
-Follow the guide on [how to Install Timber using the Starter Theme](https://timber.github.io/docs/v2/installation/#use-the-starter-theme).
+Follow the guide on [how to Install Timber using the Starter Theme](https://timber.github.io/docs/v2/installation/installation/#use-the-starter-theme).
 
 Then,
 
