@@ -42,9 +42,9 @@ class StarterSite extends Site {
 	public function enqueue_styles() {
 		wp_enqueue_style(
 			'timber-starter-style',
-			get_template_directory_uri() . '/style.css',
+			get_template_directory_uri() . '/assets/styles/main.css',
 			[],
-			filemtime( get_template_directory() . '/style.css' )
+			filemtime( get_template_directory() . '/assets/styles/main.css' )
 		);
 	}
 
