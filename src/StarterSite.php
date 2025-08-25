@@ -40,11 +40,12 @@ class StarterSite extends Site {
 	 * This enqueues theme styles.
 	 */
 	public function enqueue_styles() {
+		$main_stylesheet = '/assets/styles/main.css';
 		wp_enqueue_style(
 			'timber-starter-style',
-			get_template_directory_uri() . '/assets/styles/main.css',
+			get_template_directory_uri() . $main_stylesheet,
 			[],
-			filemtime( get_template_directory() . '/assets/styles/main.css' )
+			filemtime(get_template_directory() . $main_stylesheet)
 		);
 	}
 
