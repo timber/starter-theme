@@ -26,6 +26,7 @@ class StarterSite extends Site {
 		add_action( 'after_setup_theme', [ $this, 'theme_supports' ] );
 		add_action( 'init', [ $this, 'register_post_types' ] );
 		add_action( 'init', [ $this, 'register_taxonomies' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 
 		add_filter( 'timber/context', [ $this, 'add_to_context' ] );
 		add_filter( 'timber/twig/filters', [ $this, 'add_filters_to_twig' ] );
@@ -33,6 +34,19 @@ class StarterSite extends Site {
 		add_filter( 'timber/twig/environment/options', [ $this, 'update_twig_environment_options' ] );
 
 		parent::__construct();
+	}
+
+	/**
+	 * This enqueues theme styles.
+	 */
+	public function enqueue_styles() {
+		$main_stylesheet = '/assets/styles/main.css';
+		wp_enqueue_style(
+			'timber-starter-style',
+			get_template_directory_uri() . $main_stylesheet,
+			[],
+			filemtime(get_template_directory() . $main_stylesheet)
+		);
 	}
 
 	/**
