@@ -3,6 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="author" href="{{ site.theme.link }}/humans.txt" />
     <link rel="profile" href="http://gmpg.org/xfn/11" />
-    {% do action('get_header') %}
+    {% do action('get_header', null, []) %}
     {{ function('wp_head') }}
 </head>
